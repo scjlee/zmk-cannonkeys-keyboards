@@ -4,7 +4,7 @@ This is the ZMK module for CannonKeys's ZMK powered PCBs.
 
 The latest version of the firmware will always be available here.
 
-Most boards are straightforward, but for some of the trickier boards, please refer to the board notes before.
+Please refer to the board notes below to ensure you use the correct firmware.
 
 ## Board Notes
 
