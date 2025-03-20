@@ -17,7 +17,7 @@
 #     artifact-name: corne_left_with_logging
 #
 ---
-board: ["cerberus", "minimi40"]
+board: ["minimi40"]
 include:
   - board: bakeneko60_go
     artifact-name: bakeneko60_go
@@ -49,4 +49,11 @@ include:
     snippet: studio-rpc-usb-uart
     cmake-args: -DCONFIG_ZMK_STUDIO=y
     artifact-name: minimi40_studio
+  - board: cerberus
+    artifact-name: cerberus
+  - board: cerberus
+    snippet: studio-rpc-usb-uart
+    cmake-args: -DCONFIG_ZMK_STUDIO=y
+    artifact-name: cerberus_studio
+  
 
