@@ -4,73 +4,108 @@
  * SPDX-License-Identifier: MIT
  */
 
+ // Custom setting of HHLKB
+
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/bt.h>
+// #include <dt-bindings/zmk/combos.h> // Required for combos
 
 / {
+    // // Define combos based on your kanata configuration
+    // combos {
+    //     compatible = "zmk,combos";
+    //     combo_esc_1 {
+    //         timeout-ms = <50>;
+    //         key-positions = <16 17>; // Q, W
+    //         bindings = <&kp ESC>;
+    //     };
+    //     combo_esc_2 {
+    //         timeout-ms = <50>;
+    //         key-positions = <18 19>; // E, R
+    //         bindings = <&kp ESC>;
+    //     };
+    //     combo_minus {
+    //         timeout-ms = <50>;
+    //         key-positions = <22 23>; // U, I
+    //         bindings = <&kp MINUS>;
+    //     };
+    //     combo_bslh {
+    //         timeout-ms = <50>;
+    //         key-positions = <55 56>; // DOT, FSLH
+    //         bindings = <&kp BSLH>;
+    //     };
+    //     combo_cut {
+    //         timeout-ms = <50>;
+    //         key-positions = <42 43>; // LSHFT, Z
+    //         bindings = <&kp LC(X)>;
+    //     };
+    //     combo_undo {
+    //         timeout-ms = <50>;
+    //         key-positions = <43 44>; // Z, X
+    //         bindings = <&kp LC(Z)>;
+    //     };
+    //     combo_copy {
+    //         timeout-ms = <50>;
+    //         key-positions = <44 45>; // X, C
+    //         bindings = <&kp LC(C)>;
+    //     };
+    //     combo_paste {
+    //         timeout-ms = <50>;
+    //         key-positions = <45 46>; // C, V
+    //         bindings = <&kp LC(V)>;
+    //     };
+    // };
+
     keymap {
         compatible = "zmk,keymap";
 
-        windows_base_layer {
-            display-name = "Base Win";
+        base_layer { // Layer 0
+            display-name = "Base";
             bindings = <
-    &kp ESC   &kp N1    &kp N2    &kp N3    &kp N4    &kp N5    &kp N6    &kp N7    &kp N8    &kp N9    &kp N0    &kp MINUS &kp EQUAL  &kp BSPC  &kp DEL
-    &kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T     &kp Y     &kp U     &kp I     &kp O     &kp P     &kp LBKT  &kp RBKT   &kp BSLH  &kp PGUP
-    &kp CLCK  &kp A     &kp S     &kp D     &kp F     &kp G     &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT              &kp RET   &kp PGDN
-    &kp LSHFT           &kp Z     &kp X     &kp C     &kp V     &kp B     &kp N     &kp M     &kp COMMA &kp DOT   &kp FSLH  &kp RSHFT  &kp UP    &kp END
-    &kp LCTRL &kp LGUI  &kp LALT                                &kp SPACE                               &kp RALT  &mo 1     &kp LEFT   &kp DOWN  &kp RIGHT
-                >;
+    &kp GRAVE      &kp N1        &kp N2        &kp N3       &kp N4       &kp N5       &kp N6     &kp N7       &kp N8       &kp N9      &kp N0         &kp MINUS  &kp EQUAL  &kp BSPC  &kp DEL
+    &mt LGUI TAB   &kp Q         &kp W         &kp E        &kp R        &kp T        &kp Y      &kp U        &kp I        &kp O       &kp P          &kp LBKT   &kp RBKT   &kp LGUI  &kp PGUP
+    &mt LCTRL BSPC &kp A         &mt LALT S    &mt LSHFT D  &mt LCTRL F  &kp G        &kp H      &mt RCTRL J  &mt RSHFT K  &mt RALT L  &kp SEMI       &kp SQT    &mo 1                &kp PGDN
+    &kp LSHFT      &kp Z         &kp X         &kp C        &kp V        &kp B        &kp N      &kp M        &kp COMMA    &kp DOT     &kp FSLH       &kp RSHFT           &kp UP      &kp RCTRL
+    &kp TAB        &kp BSLH      &kp LALT                                &lt 2 SPACE                                &mt LGUI ESC     &mo PSCRN              &kp LEFT      &kp DOWN    &kp RIGHT
+
+            >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
-        windows_function_layer {
-            display-name = "Function Win";
+        nav_layer { // Layer 1
+            display-name = "Navigation";
             bindings = <
-    &kp GRAVE &kp F1    &kp F2    &kp F3    &kp F4    &kp F5    &kp F6    &kp F7    &kp F8    &kp F9    &kp F10   &kp F11   &kp F12   &kp DEL   &kp INS  
-    &rgb_ug RGB_TOG     &trans    &kp PGUP  &trans  &trans    &trans    &trans    &trans    &kp PGUP  &trans    &trans    &trans    &trans    &trans  &kp C_BRI_UP   
-    &trans    &kp HOME  &kp PGDN  &kp END  &trans &trans    &trans    &kp HOME  &kp PGDN  &kp END   &trans    &trans              &trans      &kp C_BRI_DN 
-    &trans              &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &kp C_VOL_UP    &kp C_MUTE   
-    &trans    &trans    &trans                                  &kp C_PP                             &mo 4     &trans    &kp C_PREV    &kp C_VOL_DN    &kp C_NEXT
+    &trans         &kp F1        &kp F2        &kp F3       &kp F4       &kp F5       &kp F6     &kp F7       &kp F8        &kp F9     &kp F10        &kp F11    &kp F12    &trans    &trans
+    &trans         &trans        &trans        &trans       &trans       &trans       &trans     &trans       &trans        &trans     &kp HOME       &kp UP     &kp END    &trans    &trans
+    &trans         &trans        &trans        &trans       &trans       &trans       &trans     &trans       &trans        &kp PGUP   &kp LEFT       &kp RIGHT  &trans               &trans
+    &trans         &trans        &trans        &trans       &trans       &trans       &trans     &trans       &trans        &kp PGDN   &kp DOWN       &trans              &trans      &mo 3
+    &kp CAPS       &trans        &trans                                  &kp DEL                                    &trans           &trans                 &trans        &trans      &trans
             >;
         };
 
-        mac_base_layer {
-            display-name = "Base Mac";
+        sym_layer { // Layer 2
+            display-name = "Symbols";
             bindings = <
-    &kp ESC   &kp N1    &kp N2    &kp N3    &kp N4    &kp N5    &kp N6    &kp N7    &kp N8    &kp N9    &kp N0    &kp MINUS &kp EQUAL  &kp BSPC  &kp DEL
-    &kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T     &kp Y     &kp U     &kp I     &kp O     &kp P     &kp LBKT  &kp RBKT   &kp BSLH  &kp PGUP
-    &kp CLCK  &kp A     &kp S     &kp D     &kp F     &kp G     &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT              &kp RET   &kp PGDN
-    &kp LSHFT           &kp Z     &kp X     &kp C     &kp V     &kp B     &kp N     &kp M     &kp COMMA &kp DOT   &kp FSLH  &kp RSHFT  &kp UP    &kp END
-    &kp LCTRL &kp LALT  &kp LCMD                                &kp SPACE                               &kp RCMD  &mo 3     &kp LEFT   &kp DOWN  &kp RIGHT
-                >;
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
-
-        };
-
-        mac_function_layer {
-            display-name = "Function Mac";
-            bindings = <
-    &kp GRAVE   &kp C_BRI_UP   &kp C_BRI_DN   &kp C_AC_DESKTOP_SHOW_ALL_WINDOWS   &kp C_AC_DESKTOP_SHOW_ALL_APPLICATIONS    &kp C_AC_SEARCH    &kp C_PWR    &kp C_PREV    &kp C_PP    &kp C_NEXT    &kp C_MUTE    &kp C_VOL_DN    &kp C_VOL_UP    &kp DEL    &kp INS 
-    &rgb_ug RGB_TOG   &trans   &kp PGUP   &trans &trans   &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans   
-    &trans   &kp HOME   &kp PGDN   &kp END   &trans &trans    &trans    &trans    &trans    &trans    &trans    &trans              &trans    &trans  
-    &trans            &trans   &trans   &trans   &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans  
-    &trans   &trans   &trans                               &trans                                  &mo 4     &trans    &trans    &trans    &trans
+    &trans         &trans        &trans        &trans       &trans       &trans       &trans     &trans       &trans        &trans      &trans        &trans     &trans     &trans    &trans
+    &trans         &kp GRAVE     &kp HOME      &kp END      &kp MINUS    &kp RS(BSLH) &kp LS(N6) &kp LS(LBKT) &kp LS(RBKT)  &kp LS(N4)  &kp LS(MINUS) &trans     &trans     &trans    &trans
+    &kp DEL        &kp RS(N1)    &kp RS(N8)    &kp FSLH     &kp EQUAL    &kp RS(N7)   &kp LS(N3) &kp LS(N9)   &kp LS(N0)    &kp SEMI    &kp LS(SQT)   &trans     &trans               &trans
+    &trans         &kp RS(GRAVE) &kp RS(EQUAL) &kp LBKT     &kp RBKT     &kp RS(SEMI) &kp LS(N2) &kp LS(N5)   &kp LS(COMMA) &kp LS(DOT) &kp SQT       &trans              &trans      &trans
+    &trans         &trans        &trans                                  &trans                                     &trans           &trans                  &trans       &trans      &trans
             >;
         };
 
-
-        control_layer {
+        // Default control layer (unmodified)
+        control_layer { // Layer 3
             display-name = "Keyboard Control";
             bindings = <
-    &bt BT_CLR_ALL &kp F1    &kp F2    &kp F3    &kp F4    &kp F5    &kp F6    &kp F7    &kp F8    &kp F9    &kp F10   &kp F11   &kp F12   &kp DEL   &bt BT_CLR  
-    &rgb_ug RGB_TOG &rgb_ug RGB_EFF &rgb_ug RGB_HUI &rgb_ug RGB_SAI  &rgb_ug RGB_BRI &rgb_ug RGB_SPI &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &bt BT_SEL 0   
-    &trans          &rgb_ug RGB_EFR &rgb_ug RGB_HUD &rgb_ug RGB_SAD  &rgb_ug RGB_BRD &rgb_ug RGB_SPD &trans    &trans    &trans    &trans    &trans    &trans    &studio_unlock      &bt BT_SEL 1   
-    &trans                          &trans          &trans           &trans          &trans          &trans    &trans    &trans    &trans    &trans    &trans    &trans    &gpc GP_ON 0    &bt BT_SEL 2 
-    &bootloader     &trans          &trans                                                           &rgb_ug RGB_TOG                         &trans    &trans    &trans    &gpc GP_OFF 0   &bt BT_SEL 3
+    &bt BT_CLR_ALL  &kp F1          &kp F2          &kp F3           &kp F4          &kp F5          &kp F6    &kp F7    &kp F8    &kp F9    &kp F10   &kp F11   &kp F12   &bt BT_CLR  &bt BT_SEL 0
+    &rgb_ug RGB_TOG &rgb_ug RGB_EFF &rgb_ug RGB_HUI &rgb_ug RGB_SAI  &rgb_ug RGB_BRI &rgb_ug RGB_SPI &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans      &bt BT_SEL 1
+    &trans          &rgb_ug RGB_EFR &rgb_ug RGB_HUD &rgb_ug RGB_SAD  &rgb_ug RGB_BRD &rgb_ug RGB_SPD &trans    &trans    &trans    &trans    &trans    &trans    &studio_unlock        &bt BT_SEL 2
+    &trans          &trans          &trans          &trans           &trans          &trans          &trans    &trans    &trans    &trans    &trans    &trans        &gpc GP_ON 0      &trans
+    &bootloader     &trans          &trans                           &rgb_ug RGB_TOG                                 &trans      &trans                     &trans   &gpc GP_OFF 0     &bt BT_SEL 3
             >;
         };
-
     };
 };
