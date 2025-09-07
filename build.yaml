@@ -39,10 +39,10 @@ include:
   #   artifact-name: ck60_w_studio
   - board: photon
     artifact-name: photon
-  - board: photon
-    snippet: studio-rpc-usb-uart
-    cmake-args: -DCONFIG_ZMK_STUDIO=y
-    artifact-name: photon_studio
+  # - board: photon
+  #   snippet: studio-rpc-usb-uart
+  #   cmake-args: -DCONFIG_ZMK_STUDIO=y
+  #   artifact-name: photon_studio
   # - board: minimi40
   #   artifact-name: minimi40
   # - board: minimi40
