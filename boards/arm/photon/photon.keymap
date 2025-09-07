@@ -14,14 +14,14 @@
 &mt {
     flavor = "balanced";
     tapping-term-ms = <220>;
-    quick-tap-ms = <120>;
+    quick-tap-ms = <150>;
     hold-while-undecided;
 
 };
 
-// &lt {
-//     quick-tap-ms = <120>;
-// };
+&lt {
+    quick-tap-ms = <150>;
+};
 
 / {
     combos {
