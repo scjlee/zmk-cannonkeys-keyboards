@@ -16,7 +16,6 @@
     tapping-term-ms = <220>;
     quick-tap-ms = <150>;
     hold-while-undecided;
-
 };
 
 &lt {
@@ -25,7 +24,7 @@
 
 / {
     behaviors {
-        ht: mod_tap {
+        ht: custom_hold_tap {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "balanced";
@@ -83,7 +82,7 @@
             bindings = <
     &kp GRAVE      &kp N1        &kp N2        &kp N3       &kp N4       &kp N5       &kp N6     &kp N7       &kp N8       &kp N9      &kp N0         &kp MINUS  &kp EQUAL  &kp BSPC  &kp DEL    // 0...14
     &mt LGUI TAB   &kp Q         &kp W         &kp E        &kp R        &kp T        &kp Y      &kp U        &kp I        &kp O       &kp P          &kp LBKT   &kp RBKT   &kp LGUI  &kp PGUP   // 15..29
-    &mt LCTRL BSPC &kp A         &ht LALT S    &mt LSHFT D  &mt LCTRL F  &kp G        &kp H      &mt RCTRL J  &mt RSHFT K  &ht RALT L  &kp ENTER      &kp SQT    &mo 1                &kp PGDN   // 30..43
+    &mt LCTRL BSPC &kp A         &ht LALT S    &mt LSHFT D  &mt LCTRL F  &kp G        &kp H      &mt RCTRL J  &mt RSHFT K  &htsss RALT L  &kp ENTER      &kp SQT    &mo 1                &kp PGDN   // 30..43
     &kp LSHFT      &kp Z         &kp X         &kp C        &kp V        &kp B        &kp N      &kp M        &kp COMMA    &kp DOT     &kp FSLH       &kp RSHFT           &kp UP      &kp RCTRL  // 44..57
     &kp TAB        &kp BSLH      &kp LALT                                &lt 2 SPACE                                &mt LGUI ESC     &mo PSCRN              &kp LEFT      &kp DOWN    &kp RIGHT  // 58..66
 
